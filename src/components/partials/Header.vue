@@ -8,7 +8,7 @@
             </span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><img src="static/img/logo.png" alt="User Image">
-                <b>Notifications<br>manaeer</b> 
+                <b>Notifications</b> 
             </span> 
         </router-link>
         <!-- Header Navbar: style can be found in header.less -->

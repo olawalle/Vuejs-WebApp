@@ -7,8 +7,8 @@
     </div>
       <div class="col-md-12">
         <div class="add pull-right">
-          <span class="secondary-btn" a href="#" data-toggle:tooltip title="enter details" :plain="true" @click="dialogTableVisible = true"><i class="fa fa-pencil"></i></span><br><br>
-          <span class="secondary-btn" a href="#" data-toggle:tooltip title="Upload from file" :plain="true" @click="dialogTableVisible2 = true"><i class="fa fa-upload"></i></span><br><br>
+          <span class="secondary-btn" title="enter details" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i></span><br><br>
+          <span class="secondary-btn" title="Upload from file" data-toggle="modal" data-target="#mysecModal"><i class="fa fa-upload"></i></span><br><br>
             <a href="#">
               <div style="display:table-cell;
                         vertical-align:middle;
@@ -21,20 +21,51 @@
               </div>
             </a>  
         </div>   
-            <el-dialog title="Add Contact" :visible.sync="dialogTableVisible">
-              <form v-on:submit.prevent @submit="checkForm" class="contact">
+        <modal></modal>
+          <!-- MODAL --> 
+          <div class="modal fade" id="mysecModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content"> <a href="#"><h2 class="pull-right closebtn text-danger" data-dismiss="modal">X</h2></a>
+              <form action="" class="contact">
+              <h2 class="text-center">Upload Contact</h2>
                 <fieldset class="contact-inner">
                   <p class="contact-input">
-                    <input type="text" name="name" v-model="name" placeholder="FullName" autofocus>
+                    <input type="file" name="upload" placeholder="Upload contact" >
+                  </p>
+                  <p class="contact-submit">
+                    <input type="submit" data-dismiss="modal" v-on:click="createContact" value="Create Contact">
+                  </p>
+                </fieldset>
+              </form>
+              </div>
+            </div>
+          </div>       
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content"><a href="#"><h2 class="pull-right closebtn text-danger" data-dismiss="modal">X</h2></a>
+                <form   class="contact">
+              <h2 class="text-center">Add Contact</h2>
+                <fieldset class="contact-inner">
+                  <p class="contact-input">
+                    <input type="text"   name="name" v-model="name" placeholder="Name" auofocus>
+                    <!-- <div class="form-error" v-if="errors.has('name')">
+                      {{ errors.first('name') }}
+                     </div> -->
                   </p>
                   <p class="contact-input">
-                    <input type="number" name="number" v-model="number" placeholder="Number" autofocus>
+                    <input type="number"   name="number" v-model="number" placeholder="Number">
+                    <!-- <div class="form-error" v-if="errors.has('number')">
+                      {{ errors.first('number') }}
+                    </div> -->
                   </p>
                   <p class="contact-input">
-                    <input type="text" name="address" v-model="address" placeholder="Address" autofocus>
+                    <input type="text" name="address" v-model="address" placeholder="Address" >
                   </p>
                   <p class="contact-input">
-                    <input type="text" name="email" v-model="email" placeholder="Email address" autofocus>
+                    <input   name="email" v-model="email" placeholder="Email address" >
+                    <!-- <div class="form-error" v-if="errors.has('email')">
+                      {{ errors.first('email') }}
+                    </div> -->
                   </p>
                   <p class="contact-input">
                     <select v-model="msn">
@@ -49,25 +80,15 @@
                       <option>True</option>
                       <option>False</option>
                     </select>
-                  </p>                  
+                  </p>  
                   <p class="contact-submit">
-                    <input type="submit" :plain="true" @click="dialogTableVisible = false" v-on:click="createContact" value="Create Contact">
-                  </p>
-                </fieldset>
-              </form>
-          </el-dialog>
-          <el-dialog title="Add Contact" :visible.sync="dialogTableVisible2">
-              <form action="" class="contact">
-                <fieldset class="contact-inner">
-                  <p class="contact-input">
-                    <input type="file" name="upload" placeholder="Upload contact" autofocus>
-                  </p>
-                  <p class="contact-submit">
-                    <input type="submit" :plain="true" @click="dialogTableVisible2 = false" v-on:click="createContact"  value="Create Contact">
-                  </p>
-                </fieldset>
-              </form>
-          </el-dialog>
+                  <input type="submit" data-dismiss="modal" v-on:click="createContact" value="Create Contact">
+                </p>
+              </fieldset>
+            </form>
+              </div>
+            </div>
+          </div>
         </div>
   </div>
 </transition>
@@ -91,7 +112,6 @@ export default {
       address: '',
       msn: '',
       tele: '',
-      errors: [],
       contacts: [{
         name: 'Lanre Oyedotun',
         number: '0803220918',
@@ -125,23 +145,21 @@ export default {
   },
   methods: {
     createContact () {
-      this.contacts.push({ name: this.name, number: this.number, email: this.email, address: this.address, msn: this.msn, tele: this.tele })
+      this.contacts.push({ name: this.name, number: this.number, address: this.address, email: this.email, msn: this.msn, tele: this.tele })
       sweetalert('Success!', 'contact created!', 'success')
     },
     deleteContact: function (contact) {
       this.$emit('delete-contact', contact)
-    },
-    checkForm: function (e) {
-      if (this.name && this.age) return true
-      this.errors = []
-      if (!this.name) this.errors.push('Name required.')
-      if (!this.age) this.errors.push('Age required.')
-      e.preventDefault()
     }
   }
 }
 </script>
 <style>
+.vv{
+  position: fixed;
+  top:90%;
+  left:400px
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -392,10 +410,8 @@ input, textarea, select, label {
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.2), 0 0 0 4px #eef7f9;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.2), 0 0 0 4px #eef7f9;
 }
-@media ( max-width:767px) {
-  .dialog{
-    width:100%;
-    margin-left: -30px
-  }
+.closebtn{
+  margin-right: 30px
 }
+
 </style>

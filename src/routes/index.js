@@ -4,8 +4,7 @@ import Dashboard from '../components/Dashboard.vue'
 import FullContacts from '../components/modules/FullContacts.vue'
 import Notifications from '../components/modules/Notifications-components/Notifications.vue'
 import Settings from '../components/modules/Notifications-components/Settings.vue'
-import Groups from '../components/modules/Notifications-components/Groups.vue'
-import Groups2 from '../components/modules/Groups.vue'
+import Groups from '../components/modules/Groups.vue'
 import Home from '../components/modules/Home.vue'
 
 // Routes
@@ -45,15 +44,8 @@ const routes = [
         path: '/Groups',
         name: 'Groups',
         component: Groups
-      }, {
-        path: '/Groups2',
-        name: 'Groups2',
-        component: Groups2
-      }, {
-        path: '/Groups2',
-        name: 'Groups2',
-        component: Groups2
-      }]
+      }
+	]
   }
 ]
 
