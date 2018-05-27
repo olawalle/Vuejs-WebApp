@@ -10,19 +10,17 @@ import VueAnimateNumber from 'vue-animate-number'
 import VueGmaps from 'vue-gmaps'
 import VueLayers from 'vuelayers'
 import VCharts from 'v-charts'
-import Vuelidate from 'vuelidate'
-// import VueSweetalert2 from 'vue-sweetalert2'
+import VeeValidate from 'vee-validate'
 // Resource logic
 Vue.use(Resource)
 Vue.http.options.emulateJSON = true
 
 Vue.use(VueRouter)
+Vue.use(VeeValidate)
 Vue.use(ElementUI)
 Vue.use(Bars)
 Vue.use(vueEventCalendar, {locale: 'en'})
 Vue.use(VueAnimateNumber)
-Vue.use(Vuelidate)
-// Vue.use(VueSweetalert2)
 Vue.use(VueGmaps, {
   key: 'AIzaSyCpr35b_ZSoP8nbz0VnBjVz6ABb7iurRCU',
   libraries: ['places'],
