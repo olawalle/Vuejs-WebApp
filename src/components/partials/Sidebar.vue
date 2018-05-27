@@ -1,17 +1,17 @@
 <template>
     <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
         <div>
             <section class="sidebar">
-                <!-- /.search form -->
-                <!-- Sidebar user panel -->
                 <div class="user-panel">
-                    <div class="image"> <img src="static/img/avatar2.png" class="img-circle" alt="User Image"> </div>
+                    <div class="image"> <img src="static/img/headshot.jpg" class="img-circle" alt="User Image"> </div>
                     <div class="info">
                         <p>Hello Lanre</p>
-                        <p><small>Welcome to Notifications Manager</small></p>
-                    </div> <img class="bg-user" src="static/img/avatar-bg.png" alt="User Image"> </div>
+                    </div> <img class="bg-user" src="static/img/images.jpg" alt="User Image">
+                </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
+                    <!-- <li class="header">MENU</li> -->
                     <li class="">
                         <router-link to="/">
                             <avatar username="Dashaboard One" :size='20' color="#fff"></avatar>
@@ -42,7 +42,6 @@
                             <i class="fa fa-cog"></i>Settings
                         </router-link>
                     </li>
-               
                 </ul>
             </section>
             <!-- /.sidebar -->

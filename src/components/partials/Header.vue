@@ -1,32 +1,17 @@
 <template>
-    <header class="main-header">
-        <!-- Logo -->
-        <router-link to="/dashboard" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini">
-                <b> <img src="static/img/logo.png" alt="User Image"></b>
-            </span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><img src="static/img/logo.png" alt="User Image">
-                <b>Notifications</b> 
-            </span> 
-        </router-link>
         <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"> 
-                <span class="sr-only">Toggle navigation</span> 
-                <span class="icon-bar"></span> 
-                <span class="icon-bar"></span> 
-                <span class="icon-bar"></span> 
-            </a>
-            <div class="pull-left-search">
-                <form id="demo-2">
-                    <input class="devin-search" type="search">
-                </form>
-            </div>
+        <nav class="navbar-fixed myNav navbar-static-top">
+            <span class="pull-left title"><a href="#" data-toggle="offcanvas" >
+                <i class="fa fa-bars"></i></a>
+                 <span class="">
+                    <b>Notifications Manager</b> 
+                    </span>
+            </span>
+            <span class="pull-right balance">
+                Account balance: <br>
+                #200,000 | 8000 SMS units
+            </span>
         </nav>
-    </header>
 </template>
 <script>
   export default {
@@ -36,3 +21,5 @@
     }
   }
 </script>
+
+
